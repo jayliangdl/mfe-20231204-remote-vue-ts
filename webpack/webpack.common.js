@@ -2,6 +2,7 @@ const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const { VueLoaderPlugin } = require("vue-loader");
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = (env) => {
   
@@ -12,6 +13,10 @@ module.exports = (env) => {
   
     resolve: {
       extensions: [".tsx", ".ts", ".vue", ".jsx", ".js", ".json"],
+      alias: {
+        // 设置 '@' 为 src 目录的别名
+        '@': path.resolve(__dirname, '..' , 'src')
+      },
     },
   
     devServer: {
